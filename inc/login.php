@@ -6,6 +6,8 @@
     //Gets results from form
     $username = $_POST["username"];
     $password = $_POST["password"];
+    $remember =  $_POST["remember"];
+
     //Check for empty
     if (empty($username) || empty($password)) {
         echo "You did not fill out one of the feilds";
@@ -25,17 +27,23 @@
                 if (password_verify($password, $upassword)) {
                         
                     $_SESSION['id'] = $row['id'];
-					$_SESSION['fname'] = $row['fname'];
-					$_SESSION['lname'] = $row['lname'];
-					$_SESSION['username'] = $row['username'];
-					$_SESSION['email'] = $row['email'];
+                    $_SESSION['fname'] = $row['fname'];
+                    $_SESSION['lname'] = $row['lname'];
+                    $_SESSION['username'] = $row['username'];
+                    $_SESSION['email'] = $row['email'];
 
-                    header("Location: ../account.php");
+                    if ($remember == "true") {
+                        echo "enable cookies";
+                    }
+
+                    //header("Location: ../account.php");
 
                 } else {
+                    //Wrong pass
                     echo "Either the email address or password you entered is incorrect";
                 }
             } else {
+                //No such user
                 echo "Either the email address or password you entered is incorrect";
             }
         }

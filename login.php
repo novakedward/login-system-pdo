@@ -32,8 +32,8 @@ include('header.php');
 
         <hr class="mb-4">
         <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="same-address">
-          <label class="custom-control-label" for="same-address">Remember me</label>
+          <input name="remember" type="checkbox" class="custom-control-input" id="remember" value="true">
+          <label  class="custom-control-label" for="remember" >Remember me</label>
         </div>
         <hr class="mb-4">
         <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
