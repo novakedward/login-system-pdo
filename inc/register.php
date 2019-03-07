@@ -6,26 +6,79 @@ include('db.php');
 $fname = $_POST["fname"];
 $lname = $_POST["lname"];
 $username = $_POST["username"];
-$username = $_POST["email"];
+$email = $_POST["email"];
 $password = $_POST["password"];
+$rpassword = $_POST["rpassword"];
 
-//This hashes the password so its not readable in the database.
-$hash = password_hash($password, PASSWORD_DEFAULT);
+echo $password;
+echo "<br/>";
+echo $rpassword;
+echo "<br/>";
 
-try {
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //this prepares the sql statement to make sure no one can hack it.
-    $stmt = $conn->prepare("INSERT INTO users SET fname=?, lname=?, username=?, email=?, password=?");
-    //Adds the users data into the SQL and pushes to the database+
-    $stmt->execute([$fname, $lname, $username, $username , $hash ]);
+//Check for empty
+if (empty($fname) || empty($lname) || empty($username) || empty($email) || empty($password)) {
+    echo "empty";
+    exit();
+} else {
+    if ($password != $rpassword) {
+        echo "Password mismatch";
+    } else {
+        //Check if input char are valid
+        if (!preg_match("/^[a-zA-Z]*$/", $fname) || !preg_match("/^[a-zA-Z]*$/", $lname)) {
+            echo "invalid";
+            exit();	
+        } else {
+            //Check if email is valid
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                echo "invalid_email";
+                exit();	
+            } else {
+                //Makes sure username is not used
+                $stmt = $conn->prepare('SELECT fname FROM users WHERE username=?');
+                $stmt->execute([$username]);
+                //this echos how many results were found
+                $resultCheck = $stmt->rowCount();
+                if ($resultCheck > 0) {
+                    echo "usertaken";
+                    exit();
+                } else {
+                    //Makes sure email is not used
+                    $stmt = $conn->prepare('SELECT fname FROM users WHERE email=?');
+                    $stmt->execute([$email]);
+                    //this echos how many results were found
+                    $resultCheck = $stmt->rowCount();
+                    if ($resultCheck > 0) {
+                        echo "emailtaken";
+                        exit();
+                    } else {
+                        $LastLogin = date("Y-m-d H:i:s");
+                        $DateJoined = date("Y-m-d H:i:s");
+                        //This hashes the password so its not readable in the database.
+                        $hash = password_hash($password, PASSWORD_DEFAULT);
+
+                        try {
+                            // set the PDO error mode to exception
+                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            //this prepares the sql statement to make sure no one can hack it.
+                            $stmt = $conn->prepare("INSERT INTO users SET fname=?, lname=?, username=?, email=?, password=?");
+                            //Adds the users data into the SQL and pushes to the database+
+                            $stmt->execute([$fname, $lname, $username, $email , $hash ]);
+                            
+                            echo "New record created successfully";
+                            }
+                        catch(PDOException $e)
+                            {
+                            echo $sql . "<br>" . $e->getMessage();
+                            }
+
+                        $conn = null;
+                    }
+                }
+            }
+        }
+    }
     
-    echo "New record created successfully";
-    }
-catch(PDOException $e)
-    {
-    echo $sql . "<br>" . $e->getMessage();
-    }
+}
 
-$conn = null;
+
 ?>

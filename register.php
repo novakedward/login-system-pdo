@@ -57,7 +57,7 @@ include('header.php');
       
         <div class="mb-3">
           <label for="rpassword">Repeat Password</label>
-          <input type="password" class="form-control" id="rpassword" placeholder="">
+          <input name="rpassword" type="password" class="form-control" id="rpassword" placeholder="">
           <div class="invalid-feedback">
             Please enter a valid email password.
           </div>
