@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $servername = "localhost";
 $username = "edwardno_db";
 $password = "Y{3?{uv5Zjqf";
