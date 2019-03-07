@@ -1,13 +1,11 @@
 <?php include('header.php'); ?>
   <body>
   <div class="container">
-
-
-
-   
   <?php
-    include('inc/db.php'); 
-    
+
+    include_once 'inc/db.php';
+
+    echo "<br>";
     //this demo is prepared statements selecting a specific user
     $email = "tommy@example.com";
     $id = "1";
@@ -17,6 +15,13 @@
 
         $stmt = $conn->prepare('SELECT fname FROM users WHERE email = ? AND id=?');
         $stmt->execute([$email, $id]);
+
+        //this echos how many results were found
+        $row_count = $stmt->rowCount();
+        echo $row_count;
+    
+        echo "<br>";
+
         $row = $stmt->fetch();
         $fname = $row['fname'];
         echo $fname;
@@ -33,7 +38,7 @@
     try {
 
       $stmt = $conn->prepare('SELECT * FROM users');
-      $stmt->execute([$email, $id]);
+      $stmt->execute();
       while ($row = $stmt->fetch())
       {
           echo $row['fname'] . "\n";
@@ -49,6 +54,5 @@
 
     $conn = null;
   ?>
-
-<?php include('footer.php'); ?>
+  <?php include('footer.php'); ?>
 </div>
