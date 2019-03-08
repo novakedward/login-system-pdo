@@ -47,21 +47,46 @@
                             echo "This email is used on another account, please login or reset password.";
                             exit();
                         } else {
+                            
                             $LastLogin = date("Y-m-d H:i:s");
                             $DateJoined = date("Y-m-d H:i:s");
                             //This hashes the password so its not readable in the database.
                             $hash = password_hash($password, PASSWORD_DEFAULT);
 
                             try {
+                                
+                                //Sets time for registration.
+                                $time=time();
+                                $date=date("Ymd",$time);			
+
+                                //Creates the validatetion to link in the email.
+                                function validhash ($username){
+                                    $salt = base64_encode (openssl_random_pseudo_bytes (17));
+                                    $salt = '$2y$07$' . str_replace ('+', '.', substr ($salt, 0, 22));
+                                    $hash = crypt ($password, $salt);
+                                    return $hash;
+                                }
+
+                                //Sets the validate hash that will be sent to email to check.
+                                $validate = validhash($username);
+
                                 // set the PDO error mode to exception
                                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                 //this prepares the sql statement to make sure no one can hack it.
-                                $stmt = $conn->prepare("INSERT INTO users SET fname=?, lname=?, username=?, email=?, password=?");
+                                $stmt = $conn->prepare("INSERT INTO users SET fname=?, lname=?, username=?, email=?, password=?, validate=?");
                                 //Adds the users data into the SQL and pushes to the database+
-                                $stmt->execute([$fname, $lname, $username, $email , $hash ]);
+                                $stmt->execute([$fname, $lname, $username, $email , $hash, $validate ]);
                                 
+                                //Creats the URL to send to the email.
+                                $theurl = "http://edwardnovak.info/verification.php?userid=$username&validate=$validate";
+
+                                //Sends email to the user so that they can confirm email adress in theirs.
+                                mail("$email", "Verification Link", $theurl);
+
+                                echo "Please check email  for verification link";
+
                                 //echo "New account created successfully";
-                                header("Location: ../login.php");
+                                //header("Location: ../login.php");
                                 die();
 
                                 }

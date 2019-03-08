@@ -33,7 +33,25 @@
                     $_SESSION['email'] = $row['email'];
 
                     if ($remember == "true") {
-                        echo "enable cookies";
+                        
+                        $validate = validhash($username);
+                        
+                        function passhash ($password){
+                            $salt = base64_encode (openssl_random_pseudo_bytes (17));
+                            $salt = '$2y$07$' . str_replace ('+', '.', substr ($salt, 0, 22));
+                            $hash = crypt ($password, $salt);
+                            return $hash;
+                        }
+
+                        function validhash ($username){
+                            $salt = base64_encode (openssl_random_pseudo_bytes (17));
+                            $salt = '$2y$07$' . str_replace ('+', '.', substr ($salt, 0, 22));
+                            $hash = crypt ($password, $salt);
+                            return $hash;
+                        }
+
+                        echo $validate;
+
                     }
 
                     //header("Location: ../account.php");
@@ -50,7 +68,5 @@
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
-
-
     }
 ?>
