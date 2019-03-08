@@ -1,4 +1,10 @@
-<?php include('header.php'); ?>
+<?php
+
+$page = "home";
+include('header.php');
+
+
+?>
 <style>
 .container {
   max-width: 960px;
@@ -22,10 +28,58 @@ img.my-0.mr-md-auto.font-weight-normal {
     box-shadow: none!important;
 }
 .homepage-wrap {
-  max-width: 100%;
+    max-width: 100%;
     width: 1020px;
     margin: auto;
+    z-index: 100;
+    display: block;
 }
+
+img.my-0.mr-md-auto.font-weight-normal {
+    float: left;
+}
+
+nav.my-2.my-md-0.mr-md-3 {
+    float: right;
+}
+
+a.btn.btn-outline-primary {
+    float: right;
+}
+
+nav.my-2.my-md-0.mr-md-3 {
+    margin-top: 7px!important;
+}
+@media (max-width: 767px) {
+.globalContent {
+    margin-top: 0px; 
+}
+nav.my-2.my-md-0.mr-md-3 {
+    margin-top: 25px!important;
+    margin-right: 0px!important;
+}
+
+img.my-0.mr-md-auto.font-weight-normal {
+  width: 100%;
+}
+a.btn.btn-outline-primary {
+    margin-top: 15px;
+}
+nav.my-2.my-md-0.mr-md-3 {
+  width: 100%;
+}
+nav.my-2.my-md-0.mr-md-3 {
+    text-align: center;
+}
+a.btn.btn-outline-primary {
+  width: 100%;
+}
+
+
+
+
+}
+
 
 .d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-white.border-bottom.shadow-sm {
     max-width: 1075px;
@@ -107,15 +161,7 @@ nav.my-2.my-md-0.mr-md-3 {
   
 }
 
-@media (max-width: 767px) {
-.globalContent {
-    margin-top: 0px; 
-}
-nav.my-2.my-md-0.mr-md-3 {
-    margin-top: 25px!important;
-    margin-right: 0px!important;
-}
-}
+
 
 .overflow-hidden { overflow: hidden; }
 
