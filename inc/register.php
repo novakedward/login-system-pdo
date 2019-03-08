@@ -48,22 +48,22 @@
                             exit();
                         } else {
                             
-                            $LastLogin = date("Y-m-d H:i:s");
-                            $DateJoined = date("Y-m-d H:i:s");
-                            //This hashes the password so its not readable in the database.
-                            $hash = password_hash($password, PASSWORD_DEFAULT);
+                            
+                           
 
                             try {
                                 
-                                //Sets time for registration.
-                                $time=time();
-                                $date=date("Ymd",$time);			
+                                 //This hashes the password so its not readable in the database.
+                                $hash = password_hash($password, PASSWORD_DEFAULT);
+                                
+                                //Gets date and time now
+                                $datenow = date("Y-m-d H:i:s");
 
                                 //Creates the validatetion to link in the email.
                                 function validhash ($username){
                                     $salt = base64_encode (openssl_random_pseudo_bytes (17));
                                     $salt = '$2y$07$' . str_replace ('+', '.', substr ($salt, 0, 22));
-                                    $hash = crypt ($password, $salt);
+                                    $hash = crypt ($username, $salt);
                                     return $hash;
                                 }
 
@@ -73,12 +73,12 @@
                                 // set the PDO error mode to exception
                                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                 //this prepares the sql statement to make sure no one can hack it.
-                                $stmt = $conn->prepare("INSERT INTO users SET fname=?, lname=?, username=?, email=?, password=?, validate=?");
+                                $stmt = $conn->prepare("INSERT INTO users SET fname=?, lname=?, username=?, email=?, password=?, validate=?, joined=?, login=?");
                                 //Adds the users data into the SQL and pushes to the database+
-                                $stmt->execute([$fname, $lname, $username, $email , $hash, $validate ]);
+                                $stmt->execute([$fname, $lname, $username, $email , $hash, $validate, $datenow, $datenow ]);
                                 
                                 //Creats the URL to send to the email.
-                                $theurl = "http://edwardnovak.info/verification.php?userid=$username&validate=$validate";
+                                $theurl = "http://edwardnovak.info/verification.php?username=$username&validate=$validate";
 
                                 //Sends email to the user so that they can confirm email adress in theirs.
                                 mail("$email", "Verification Link", $theurl);

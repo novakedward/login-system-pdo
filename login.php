@@ -29,14 +29,14 @@ include('header.php');
             Please enter a valid email password.
           </div>
         </div>
-
-        <hr class="mb-4">
+        <div class="col-md-12 mb-3">
         <div class="custom-control custom-checkbox">
           <input name="remember" type="checkbox" class="custom-control-input" id="remember" value="true">
           <label  class="custom-control-label" for="remember" >Remember me</label>
         </div>
         <hr class="mb-4">
         <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+        </div>
         </div>
       </form>
     </div>

@@ -34,27 +34,38 @@
 
                     if ($remember == "true") {
                         
-                        $validate = validhash($username);
-                        
-                        function passhash ($password){
-                            $salt = base64_encode (openssl_random_pseudo_bytes (17));
-                            $salt = '$2y$07$' . str_replace ('+', '.', substr ($salt, 0, 22));
-                            $hash = crypt ($password, $salt);
-                            return $hash;
-                        }
-
+                        //Creates the validatetion to link in the email.
                         function validhash ($username){
                             $salt = base64_encode (openssl_random_pseudo_bytes (17));
                             $salt = '$2y$07$' . str_replace ('+', '.', substr ($salt, 0, 22));
-                            $hash = crypt ($password, $salt);
+                            $hash = crypt ($username, $salt);
                             return $hash;
                         }
 
-                        echo $validate;
+                        //Sets the validate hash that will be sent to email to check.
+                        $validate = validhash($username);
+
+                        //60 days from now
+                        $expires = date('Y-m-d H:m:s', time() + 86400 * 60);
+                        try {
+
+                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            //this prepares the sql statement to make sure no one can hack it.
+                            $stmt = $conn->prepare("INSERT INTO sessions SET session=?, token=?, user=?, expires=?");
+                            //Adds the users data into the SQL and pushes to the database+
+                            $stmt->execute([$validate, $validate, $username, $expires ]);
+                        
+                            setcookie("session", $validate, time() + (86400 * 60), "/"); // 86400 = 1 day
+                        }
+                        catch(PDOException $e)
+                            {
+                            echo $sql . "<br>" . $e->getMessage();
+                            }
+
 
                     }
 
-                    //header("Location: ../account.php");
+                    header("Location: ../dash");
 
                 } else {
                     //Wrong pass
