@@ -56,12 +56,15 @@
                             $stmt->execute([$validate, $validate, $username, $expires ]);
                         
                             setcookie("session", $validate, time() + (86400 * 60), "/"); // 86400 = 1 day
+                            
                         }
+
+                        //add handler for integrity volioation
                         catch(PDOException $e)
                             {
                             echo $sql . "<br>" . $e->getMessage();
                             }
-
+                          
 
                     }
 

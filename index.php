@@ -376,7 +376,7 @@ nav.my-2.my-md-0.mr-md-3 {
       <h1 class="common-SectionTitle">The login system for the books</h1>
       <p class="common-BodyText">
         NL Softworks has been working on creating a safe secure and smooth login system for the poeple. This will allow developers who have an idea to get a jump start and skip
-        all the setup and worry with creating a php login with all the fetures that are standard now.
+        all the setup and worry with creating a php login with all the features that are standard now.
       </p>
     
     </section>
@@ -387,7 +387,57 @@ nav.my-2.my-md-0.mr-md-3 {
 
 <img class="img-fluid" src="https://www.taskade.com/images/landing-main.png">
 
+
 </div>
+  
+
+<div class="row align-items-center" style="background-color: #efefef; padding: 50px 0;">
+<div class="container">
+<div class="row align-items-center">
+    <div class="col-md-6 col-sm-12">
+    <h3>Inbox</h3>
+      <p>You will have an inbox with all your news and latest updates from the day and ongoing issues</p>
+    </div>
+ 
+    <div class="col-md-6 col-sm-12">
+    <img class="img-fluid" src="https://storage.googleapis.com/spec-host-backup/mio-design%2Fassets%2F0B6xUSjjSulxcdnAxWFVoRWxJSVE%2Fshapemeaning-do-reply-1.png">
+    </div>
+    </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+
+<div class="row align-items-center" style="padding: 50px 10px;">
+    <div class="col-md-4 col-sm-12">
+    <video width="100%" height="" autoplay loop>
+  <source src="https://storage.googleapis.com/spec-host-backup/mio-design%2Fassets%2F15mus9LljNRSo2ZVit08Mayol35-_PZ22%2Fplacement-snackbar-dont.mp4
+" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-6 col-sm-12">
+      <h3>Messages</h3>
+      <p>Once you login you will see all the other users that are registerd and you will be able to send them messages</p>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+
 
 
 <div class="container">

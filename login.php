@@ -6,7 +6,7 @@ include('header.php');
 
     <div class="col-md-6 order-md-1">
       <h4 class="mb-3">Login</h4>
-      <form action="inc/login.php" method="POST" class="needs-validation" novalidate="">
+      <form action="/inc/login.php" method="POST" class="needs-validation" novalidate="">
         <div class="row">
         
         <div class="col-md-12 mb-3">
