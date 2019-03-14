@@ -13,7 +13,7 @@
     }
   }
 
-  function getTokenFeild() {
+  function getTokenField() {
     echo '<input type="hidden" name="token" value="'.$_SESSION['auth_token'].'" />';
   }
 

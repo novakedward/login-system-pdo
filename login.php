@@ -4,7 +4,6 @@ if (isset($_SESSION['id'])) {
   header("Location: ../dash");
 }
 
-include_once 'inc/token.php';
 
 destroyToken();
 ?>
@@ -18,7 +17,7 @@ destroyToken();
         <div class="row">
         
         <div class="col-md-12 mb-3">
-        <?php getTokenFeild(); ?>
+        <?php getTokenField(); ?>
           <label for="username">Username or Email</label>
           <div class="input-group">
             <div class="input-group-prepend">

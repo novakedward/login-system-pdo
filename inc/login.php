@@ -1,39 +1,15 @@
 <?php
-    session_start();
-    var_dump($_SESSION);
-    if(isset($_SESSION, $_SESSION['token3'])) {
-      echo 'Session ids ' . ($_SESSION['token3']===session_id()? 'match' : 'do not match');
-    }
-
-
-    //Adds the database connection
-    include('db.php');
+    //Adds required functions
+    include('../config.php');
 
     //Gets results from form
     $username = $_POST["username"];
     $password = $_POST["password"];
     $remember =  $_POST["remember"];
-
     $token =  $_POST["auth_token"];
 
-    //token bla bla bla into database under user_error
-
-    //pull username from session and check if the token matches the user session
-
-
-
-    echo "Token <br>";
-    echo $_POST["auth_token"];
-    echo "<br>";
-    echo "Session <br>";
-    echo "<br>";
-    echo $_SESSION['auth_token'];
-
-
-    include('token.php');
+    //this prevents cross site injection attacks
     checkToken($token);
-
-
 
     //Check for empty
     if (empty($username) || empty($password)) {
