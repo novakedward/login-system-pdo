@@ -6,9 +6,9 @@
     $username = $_POST["username"];
     $password = $_POST["password"];
     $remember =  $_POST["remember"];
-    $token =  $_POST["auth_token"];
+    $token =  $_POST["token"];
 
-    //this prevents cross site injection attacks
+    //This checks to make sure its not a sql injection attack
     checkToken($token);
 
     //Check for empty

@@ -4,8 +4,9 @@ if (isset($_SESSION['id'])) {
   header("Location: ../dash");
 }
 
+include_once 'inc/token.php';
 
-destroyToken();
+//destroyToken();
 ?>
 <div class="container">
 <div class="row justify-content-md-center">
@@ -48,7 +49,7 @@ destroyToken();
         </div>
 
       </form>
-      <?php destroyToken(); ?>
+      <?php //destroyToken(); ?>
     </div>
   </div>
 

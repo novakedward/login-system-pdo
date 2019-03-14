@@ -2,7 +2,7 @@
 
   function getToken() {
     if (!isset($_SESSION['auth_token'])) {
-      $_SESSION['toauth_tokenken'] = md5(uniqid());
+      $_SESSION['auth_token'] = md5(uniqid());
     }
   }
 
