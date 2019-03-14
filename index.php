@@ -375,7 +375,7 @@ nav.my-2.my-md-0.mr-md-3 {
     <section id="intro" class="container">
       <h1 class="common-SectionTitle">The login system for the books</h1>
       <p class="common-BodyText">
-        NL Softworks has been working on creating a safe secure and smooth login system for the poeple. This will allow developers who have an idea to get a jump start and skip
+        NL Softworks has been working on creating a safe secure and smooth login system for the people. This will allow developers who have an idea to get a jump start and skip
         all the setup and worry with creating a php login with all the features that are standard now.
       </p>
     

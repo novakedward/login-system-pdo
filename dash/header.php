@@ -5,6 +5,15 @@
   include('../inc/db.php');
   //this checks if the user has a login cookie
   include('../inc/session.php');
+
+  if (!isset($_SESSION['id'])) {
+    header("Location: ../login.php");
+  }
+  include('../inc/token.php');
+
+  destroyToken();
+
+  getToken();
 ?>
 <html lang="en">
   <head>

@@ -1,15 +1,24 @@
 <?php
 include('header.php');
+if (isset($_SESSION['id'])) {
+  header("Location: ../dash");
+}
+
+include_once 'inc/token.php';
+
+destroyToken();
 ?>
 <div class="container">
 <div class="row justify-content-md-center">
 
     <div class="col-md-6 order-md-1">
       <h4 class="mb-3">Login</h4>
+      <?php getToken(); ?>
       <form action="/inc/login.php" method="POST" class="needs-validation" novalidate="">
         <div class="row">
         
         <div class="col-md-12 mb-3">
+        <?php getTokenFeild(); ?>
           <label for="username">Username or Email</label>
           <div class="input-group">
             <div class="input-group-prepend">
@@ -38,7 +47,9 @@ include('header.php');
         <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
         </div>
         </div>
+
       </form>
+      <?php destroyToken(); ?>
     </div>
   </div>
 
