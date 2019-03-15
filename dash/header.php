@@ -9,11 +9,9 @@
   if (!isset($_SESSION['id'])) {
     header("Location: ../login.php");
   }
-  include('../inc/token.php');
 
-  destroyToken();
 
-  getToken();
+
 ?>
 <html lang="en">
   <head>
@@ -100,6 +98,9 @@ body {
 .lh-100 { line-height: 1; }
 .lh-125 { line-height: 1.25; }
 .lh-150 { line-height: 1.5; }
+main.container-fluid {
+    margin-top: 16px;
+}
 </style>
     <title><?php echo $page; ?> | Dashboard</title>
   </head>
@@ -150,3 +151,18 @@ body {
 
   </nav>
 </div>
+
+
+
+<main role="main" class="container-fluid">
+
+<?php if ($emailverified != "1") { ?>
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<strong>Holy guacamole!</strong> You should verify your email.
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>
+
+<?php } ?>

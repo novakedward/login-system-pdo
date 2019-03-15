@@ -6,7 +6,7 @@ With Prepared Statements
 - ~~Create email verification so that user gets token and clicks link to verify~~
 - ~~Create Login for users that have registerd~~
 - ~~Create account page with user info~~
-- Setup Verify
+- ~~Setup Verify~~
 - Upgrade token hash
 - Create edit page for users to edit account info
 - Add password reset

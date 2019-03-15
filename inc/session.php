@@ -24,6 +24,8 @@ if (!isset($_SESSION['id'])) {
         $_SESSION['lname'] = $row['lname'];
         $_SESSION['username'] = $row['username'];
         $_SESSION['email'] = $row['email'];
+
+        $emailverified = $row['validate'];
         
       }
       catch(PDOException $e) {
@@ -34,3 +36,4 @@ if (!isset($_SESSION['id'])) {
     }
   }
 ?>
+

@@ -6,10 +6,6 @@ include('header.php'); ?>
 
 
 
-  <main role="main" class="container-fluid">
-
-
-
 
 
   <div class="row">
