@@ -1,10 +1,7 @@
 <!doctype html>
 <?php 
-	date_default_timezone_set('America/New_York');
-  session_start();
-  include('inc/db.php');
-  //this checks if the user has a login cookie
-  include('inc/session.php');
+	//Adds required functions
+  include('config.php');
 ?>
 
 <html lang="en">

@@ -1,5 +1,6 @@
 <?php
-include('db.php');
+//Adds required functions
+include('../config.php');
 
 session_start();
 session_unset();

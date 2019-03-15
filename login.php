@@ -4,8 +4,6 @@ if (isset($_SESSION['id'])) {
   header("Location: ../dash");
 }
 
-include_once 'inc/token.php';
-
 //destroyToken();
 ?>
 <div class="container">

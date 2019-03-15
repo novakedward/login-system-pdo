@@ -1,6 +1,6 @@
 <?php
-    //Adds the database connection
-    include('db.php');
+    //Adds required functions
+    include('../config.php');
 
     //Gets results from form
     $fname = $_POST["fname"];
