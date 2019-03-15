@@ -86,7 +86,7 @@
                                 echo "Please check email  for verification link";
 
                                 //echo "New account created successfully";
-                                //header("Location: ../login.php");
+                                header("Location: ../login.php?message=Account_Created");
                                 die();
 
                                 }
