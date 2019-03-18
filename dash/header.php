@@ -127,7 +127,8 @@ main.container-fluid {
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
-        <a class="dropdown-item" href="#">Settings</a>
+          <a class="dropdown-item" href="profile.php">Profile</a>
+          <a class="dropdown-item" href="settings.php">Settings</a>
           <a class="dropdown-item" href="../inc/logout.php">Logout</a>
         </div>
       </li>
