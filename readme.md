@@ -7,7 +7,7 @@ With Prepared Statements
 - ~~Create Login for users that have registerd~~
 - ~~Create account page with user info~~
 - ~~Setup Verify~~
-- Upgrade token hash
+- ~~Upgrade token hash~~
 - Create edit page for users to edit account info
 - Add password reset
 - ~~Make cookies and eows created in the sessions table delete after user logs out~~
