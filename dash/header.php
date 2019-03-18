@@ -153,7 +153,10 @@ main.container-fluid {
 
 <main role="main" class="container-fluid">
 
-<?php if ($emailverified != "1") { ?>
+<?php 
+
+
+if ($emailverified != "1") { ?>
 
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
 <strong>Holy guacamole!</strong> You should verify your email.

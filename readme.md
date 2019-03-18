@@ -9,6 +9,7 @@ With Prepared Statements
 - ~~Setup Verify~~
 - ~~Upgrade token hash~~
 - Create edit page for users to edit account info
+- Add tokens to regiester 
 - Add password reset
 - ~~Make cookies and eows created in the sessions table delete after user logs out~~
 - Allow users to upload profile picture
