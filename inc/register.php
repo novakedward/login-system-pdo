@@ -62,7 +62,7 @@
                                 //Creates the validatetion to link in the email.
                                 function validhash ($username){
                                     $salt = base64_encode (openssl_random_pseudo_bytes (17));
-                                    $salt = '$2y$07$' . str_replace ('+', '.', substr ($salt, 0, 22));
+                                    $salt = str_replace ('+', '.', substr ($salt, 0, 22));
                                     $hash = crypt ($username, $salt);
                                     return $hash;
                                 }
@@ -78,7 +78,7 @@
                                 $stmt->execute([$fname, $lname, $username, $email , $hash, $validate, $datenow, $datenow ]);
                                 
                                 //Creats the URL to send to the email.
-                                $theurl = "http://edwardnovak.info/verification.php?username=$username&validate=$validate";
+                                $theurl = "http://edwardnovak.info/inc/verify.php?username=$username&validate=$validate";
 
                                 //Sends email to the user so that they can confirm email adress in theirs.
                                 mail("$email", "Verification Link", $theurl);

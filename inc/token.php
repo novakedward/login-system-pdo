@@ -2,7 +2,13 @@
 
   function getToken() {
     if (!isset($_SESSION['auth_token'])) {
-      $_SESSION['auth_token'] = md5(uniqid());
+
+    //Generate a random string.
+    $token = openssl_random_pseudo_bytes(16);
+    //Convert the binary data into hexadecimal representation.
+    $token = bin2hex($token);
+
+    $_SESSION['auth_token'] = $token;
     }
   }
 
