@@ -73,6 +73,10 @@
     //Adds the users data into the SQL and pushes to the database+
     $stmt->execute([$hash, $id]);
     
-    echo "all good";
-
+    if ($debugmode == "true") {
+        echo "all good";
+    } else {
+        header("Location: ../dash/security.php?message=account_updated");
+        die();
+    }
 ?>
