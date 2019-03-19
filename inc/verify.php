@@ -33,6 +33,10 @@
                 $stmt = $conn->prepare("UPDATE users SET email=? WHERE username=?");
                 //Adds the users data into the SQL and pushes to the database+
                 $stmt->execute([$email, $username ]);
+
+                unset($_SESSION['email']);
+                $_SESSION['email'] = $email;
+
               }
 
 

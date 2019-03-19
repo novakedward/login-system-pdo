@@ -128,7 +128,7 @@
 
         //Creats the URL to send to the email.
         $theurl = "http://edwardnovak.info/inc/verify.php?username=$username&email=$email&validate=$validate";
-
+        
         //Sends email to the user so that they can confirm email adress in theirs.
         mail("$email", "Verification Link", $theurl);
 
@@ -151,12 +151,10 @@
         unset($_SESSION['fname']);
         unset($_SESSION['lname']);
         unset($_SESSION['username']);
-        unset($_SESSION['email']);
-
+        
         $_SESSION['fname'] = $fname;
         $_SESSION['lname'] = $lname;
         $_SESSION['username'] = $username;
-        $_SESSION['email'] = $email;
                                
         if ($debugmode == "true") {
             echo "all good";
