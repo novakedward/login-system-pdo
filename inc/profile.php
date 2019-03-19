@@ -123,17 +123,17 @@
         $validate = validhash($username);
 
         /********************************************
-         * NEED TO CREATE FUNCTION TO ADD NEW EMAILS 
+         * NEED TO CREATE FUNCTION TO ADD NEW EMAILS INSTAD OF REPLACING IT
          ********************************************/
 
         //Creats the URL to send to the email.
-        //$theurl = "http://edwardnovak.info/inc/verify.php?username=$username&validate=$validate";
+        $theurl = "http://edwardnovak.info/inc/verify.php?username=$username&email=$email&validate=$validate";
 
         //Sends email to the user so that they can confirm email adress in theirs.
-        //mail("$email", "Verification Link", $theurl);
+        mail("$email", "Verification Link", $theurl);
 
-        //echo "Please check email  for verification link";
-
+        echo "Please check email  for verification link";
+        echo "<br>";
     }
 
     try {
@@ -144,9 +144,9 @@
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         //this prepares the sql statement to make sure no one can hack it.
-        $stmt = $conn->prepare("UPDATE users SET fname=?, lname=?, username=?, email=?, validate=? WHERE id=?");
+        $stmt = $conn->prepare("UPDATE users SET fname=?, lname=?, username=?, validate=? WHERE id=?");
         //Adds the users data into the SQL and pushes to the database+
-        $stmt->execute([$fname, $lname, $username, $email , $validate, $id]);
+        $stmt->execute([$fname, $lname, $username, $validate, $id]);
 
         unset($_SESSION['fname']);
         unset($_SESSION['lname']);

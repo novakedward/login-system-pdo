@@ -4,6 +4,7 @@
     
     $validate = $_GET["validate"];
     $username = $_GET["username"];
+    $email = $_GET["email"];
 
     try {
       $stmt = $conn->prepare('SELECT * FROM users WHERE username=?');
@@ -27,6 +28,13 @@
               $stmt = $conn->prepare("UPDATE users SET validate='1' WHERE validate=? AND username=?");
               //Adds the users data into the SQL and pushes to the database+
               $stmt->execute([$validate, $username ]);
+
+              if ($email != "") {
+                $stmt = $conn->prepare("UPDATE users SET email=? WHERE username=?");
+                //Adds the users data into the SQL and pushes to the database+
+                $stmt->execute([$email, $username ]);
+              }
+
 
               header("Location: ../dash?message=Verified");
 
