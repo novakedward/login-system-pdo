@@ -8,13 +8,13 @@ With Prepared Statements
 - ~~Create account page with user info~~
 - ~~Setup Verify~~
 - ~~Upgrade token hash~~
-- Add token to edit profile
-- Setup security page
-- make email not update after verified not before
+- ~~Add token to edit profile~~
+- ~~Setup security page~~
 - ~~Create edit page for users to edit account info~~
 - add email check on register
 - Add tokens to regiester 
-- Add password reset
+- ~~Add password reset~~
+- Add forgot password reset
 - ~~Make cookies and eows created in the sessions table delete after user logs out~~
 - Allow users to upload profile picture
 - Create auto installer for Database
