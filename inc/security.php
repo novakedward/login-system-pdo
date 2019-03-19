@@ -30,7 +30,7 @@
 
     }
     //This checks to make sure its not a sql injection attack
-    checkToken($token);
+    checkToken($token, $debugmode);
 
     //Check for empty
     if (empty($cpass) || empty($npass) || empty($cnpass)) {

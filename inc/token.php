@@ -12,7 +12,7 @@
     }
   }
 
-  function checkToken($token) {
+  function checkToken($token, $debugmode) {
     if ($token != $_SESSION['auth_token']) {
       echo "Invalid Token";
       

@@ -4,7 +4,7 @@
     date_default_timezone_set('America/New_York');
     
     //Mode settings
-    $debugmode = "false";
+    $debugmode = "true";
 
     if ($debugmode == "true") {
         echo "Debug Mode: <b>" .$debugmode. "</b><br>";

@@ -1,5 +1,5 @@
 <?php
-  $page = "Profile";
+  $page = "Security";
   include('header.php'); 
 ?>
 <body>
