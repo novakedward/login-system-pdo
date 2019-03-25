@@ -9,6 +9,9 @@
     $email = $_POST["email"];
     $password = $_POST["password"];
     $rpassword = $_POST["rpassword"];
+    $token =  $_POST["token"];
+
+    checkToken($token);
 
     //Check for empty
     if (empty($fname) || empty($lname) || empty($username) || empty($email) || empty($password)) {

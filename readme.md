@@ -11,15 +11,15 @@ With Prepared Statements
 - ~~Add token to edit profile~~
 - ~~Setup security page~~
 - ~~Create edit page for users to edit account info~~
-- add email check on register
-- Add tokens to regiester 
+- ~~add email check on register~~
+- ~~Add tokens to regiester~~ 
 - ~~Add password reset~~
-- Add forgot password reset
 - ~~Make cookies and eows created in the sessions table delete after user logs out~~
-- Allow users to upload profile picture
-- Create auto installer for Database
+- Add forgot password reset
 - Add ajax to register form to show if username/email is taken
+- Allow users to upload profile picture
 
 # Other To do
 - Add login time stamp on login
-- Create user roles table
+- Create user roles and table table
+- Create auto installer for Database for easy first setup
