@@ -50,7 +50,7 @@ if (isset($_SESSION['id'])) {
       <p><a href="/forgot.php">Forgot password?</a></p>
       <?php //destroyToken(); ?>
     </div>
-    
+       
   </div>
 
 <?php

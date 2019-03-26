@@ -15,7 +15,7 @@ With Prepared Statements
 - ~~Add tokens to regiester~~ 
 - ~~Add password reset~~
 - ~~Make cookies and eows created in the sessions table delete after user logs out~~
-- Add forgot password reset
+- ~~Add forgot password reset~~
 - Add ajax to register form to show if username/email is taken
 - Allow users to upload profile picture
 
