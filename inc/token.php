@@ -14,21 +14,11 @@
 
   function checkToken($token, $debugmode) {
     if ($token != $_SESSION['auth_token']) {
-      echo "Invalid Token";
-      
-      if ($debugmode == "true") {
-        echo "</b><br> token: <b>";
-        echo $token;
-        echo "</b><br> session: <b>";
-        echo $_SESSION['auth_token'];
-        echo "</b><br>";
-      }
-
+      //echo "Invalid Token";
       die();
     } else {
       if ($debugmode == "true") {
-        echo "Token Match";
-        echo "<br>";
+        //echo "Token Match";
       }
     }
   }

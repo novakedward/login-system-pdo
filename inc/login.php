@@ -3,10 +3,10 @@
     include('../config.php');
 
     //Gets results from form
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $remember =  $_POST["remember"];
-    $token =  $_POST["token"];
+    $username = $_REQUEST["username"];
+    $password = $_REQUEST["password"];
+    $remember =  $_REQUEST["remember"];
+    $token =  $_REQUEST["token"];
 
     //This checks to make sure its not a sql injection attack
     checkToken($token);
@@ -71,7 +71,8 @@
 
                     }
 
-                    header("Location: ../dash");
+                    //header("Location: ../dash");
+                    echo "true";
 
                 } else {
                     //Wrong pass

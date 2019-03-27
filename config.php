@@ -2,13 +2,6 @@
 
     session_start();
     date_default_timezone_set('America/New_York');
-    
-    //Mode settings
-    $debugmode = "false";
-
-    if ($debugmode == "true") {
-        echo "Debug Mode: <b>" .$debugmode. "</b><br>";
-    }
 
     //Database connection
     $servername = "localhost";

@@ -1,10 +1,12 @@
 <?php
+
 //check if user has a cookie session
 if (!isset($_SESSION['id'])) {
     //no session
     if(!isset($_COOKIE['session'])) {
       //no cookie
     } else {
+      
       //cookie set
       $session = $_COOKIE['session'];
   
@@ -30,15 +32,16 @@ if (!isset($_SESSION['id'])) {
       }
       catch(PDOException $e) {
         
-        echo $sql . "<br>" . $e->getMessage();
+        //echo $sql . "<br>" . $e->getMessage();
       
       }
+
     }
   } else {
     //this checks if the user is verified or not
     try {
   
-      
+
       $username = $_SESSION['username'];
       
       $stmt = $conn->prepare('SELECT * FROM users WHERE username=?');
@@ -46,16 +49,20 @@ if (!isset($_SESSION['id'])) {
       $row = $stmt->fetch();
 
       $emailverified = $row['validate'];
-           
+        
+     
     }
     catch(PDOException $e) {
       
-      echo $sql . "<br>" . $e->getMessage();
+      //echo $sql . "<br>" . $e->getMessage();
     
     }
 
 
 
   }
+
+
+
 ?>
 
