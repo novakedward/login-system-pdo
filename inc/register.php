@@ -3,13 +3,13 @@
     include('../config.php');
 
     //Gets results from form
-    $fname = $_POST["fname"];
-    $lname = $_POST["lname"];
-    $username = $_POST["username"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    $rpassword = $_POST["rpassword"];
-    $token =  $_POST["token"];
+    $fname = $_REQUEST["fname"];
+    $lname = $_REQUEST["lname"];
+    $username = $_REQUEST["username"];
+    $email = $_REQUEST["email"];
+    $password = $_REQUEST["password"];
+    $rpassword = $_REQUEST["rpassword"];
+    $token =  $_REQUEST["token"];
 
     checkToken($token);
 
@@ -38,7 +38,7 @@
                     //this echos how many results were found
                     $resultCheck = $stmt->rowCount();
                     if ($resultCheck > 0) {
-                        echo "This username is already taken";
+                        echo "user_taken";
                         exit();
                     } else {
                         //Makes sure email is not used
@@ -47,7 +47,7 @@
                         //this echos how many results were found
                         $resultCheck = $stmt->rowCount();
                         if ($resultCheck > 0) {
-                            echo "This email is used on another account, please login or reset password.";
+                            echo "email_taken";
                             exit();
                         } else {
                             

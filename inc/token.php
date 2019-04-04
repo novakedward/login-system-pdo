@@ -24,7 +24,7 @@
   }
 
   function getTokenField() {
-    echo '<input type="hidden" name="token" value="'.$_SESSION['auth_token'].'" />';
+    echo '<input type="hidden" id="token" name="token" value="'.$_SESSION['auth_token'].'" />';
   }
 
   function destroyToken() {

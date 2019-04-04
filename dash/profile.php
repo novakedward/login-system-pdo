@@ -60,7 +60,218 @@
           </form>
         </div>
       </div>
+
+
+      <div class="col-12 my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Profile Image</h6>
+        <div class="media text-muted pt-3">
+        <?php 
+
+try {
+  
+
+  $username = $_SESSION['username'];
+  
+  $stmt = $conn->prepare('SELECT * FROM users WHERE username=?');
+  $stmt->execute([$username]);
+  $row = $stmt->fetch();
+  
+  $user_image_etc = $row['image'];
+ 
+}
+catch(PDOException $e) {
+  
+  echo $sql . "<br>" . $e->getMessage();
+
+}
+
+?>
+<div class="row" style="width: 100%;">
+ <div class="col-12">
+      
+      <?php if ($user_image_etc == "") { ?>
+
+
+        <?php } else { ?>
+
+          <form action="../inc/upload_del.php" method="post" enctype="multipart/form-data" class="col-12">
+            <input type="text" class="" id="" placeholder="" name="id" value="<?php echo $_SESSION['id']; ?>" hidden>
+            
+            <input class="btn btn-danger btn" type="submit" value="Delete Profile Image" name="submit">
+          </form>
+      <?php } ?>
+    </div> 
+
+
+
+
+
+
+        <style>
+.file-upload {
+  background-color: #ffffff;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.file-upload-content {
+  display: none;
+  text-align: center;
+}
+
+.file-upload-input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.image-upload-wrap {
+  margin-top: 20px;
+  border: 4px dashed #efefef;
+  position: relative;
+}
+
+.image-dropping,
+.image-upload-wrap:hover {
+  border: 4px dashed #1FB26480;
+}
+
+.image-title-wrap {
+  padding: 0 15px 15px 15px;
+  color: #222;
+}
+
+.drag-text {
+  text-align: center;
+}
+
+.drag-text h3 {
+  font-weight: 400;
+  padding: 60px 0;
+  font-size: 1em;
+}
+
+.file-upload-image {
+  max-height: 500px;
+  max-width: 500px;
+  padding: 20px;
+}
+
+</style>
+
+<script>
+function readURL(input) {
+  if (input.files && input.files[0]) {
+
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('.image-upload-wrap').hide();
+
+      $('.file-upload-image').attr('src', e.target.result);
+      $('.file-upload-content').show();
+
+      $('.image-title').html(input.files[0].name);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+
+  } else {
+    removeUpload();
+  }
+}
+
+function removeUpload() {
+  $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+  $('.file-upload-content').hide();
+  $('.image-upload-wrap').show();
+}
+$('.image-upload-wrap').bind('dragover', function () {
+        $('.image-upload-wrap').addClass('image-dropping');
+    });
+    $('.image-upload-wrap').bind('dragleave', function () {
+        $('.image-upload-wrap').removeClass('image-dropping');
+});
+
+</script>
+
+
+
+
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+            <form action="../inc/upload.php" method="post" enctype="multipart/form-data" class="col-12">
+            <input type="text" class="" id="" placeholder="" name="id" value="<?php echo $_SESSION['id']; ?>" hidden>
+              
+            <div class="mb-3">
+            <div class="file-upload">
+
+              <!--<button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>-->
+
+              <div class="image-upload-wrap">
+                <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" id="fileToUpload" name="fileToUpload"/>
+                <div class="drag-text">
+                  <h3>Click here or drag and drop a file</h3>
+                </div>
+              </div>
+              <div class="file-upload-content">
+                <img class="file-upload-image" src="#" alt="your image" />
+                <div class="image-title-wrap">
+                  <button type="button" onclick="removeUpload()" class="remove-image btn btn-danger btn">Remove <span class="image-title">Uploaded Image</span></button>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+              </div> 
+              <input class="btn btn-primary btn" type="submit" value="Upload Image" name="submit">
+          </form>
+          </div> 
+     
+
+    
+
+
+
+
+
+
+
+
+          </div>
+
+    
+          </div>
+
+
     </div>
+
+
+
+
+    
 
     <div class="col-2">
       <?php include('sidebar.php'); ?>  

@@ -98,6 +98,9 @@ body {
 main.container-fluid {
     margin-top: 16px;
 }
+.alert {
+    margin-bottom: 0rem;
+}
 </style>
     <title><?php echo $page; ?> | Dashboard</title>
   </head>
@@ -137,7 +140,6 @@ main.container-fluid {
 
   </div>
 </nav>
-
 <div class="nav-scroller bg-white shadow-sm">
   <nav class="nav nav-underline">
     <a class="nav-link active" href="#">Dashboard</a>

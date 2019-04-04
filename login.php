@@ -46,8 +46,8 @@ function login(username, password, token, remember) {
 <div class="container">
 <div class="row justify-content-md-center">
 
-    <div class="col-md-6 order-md-1">
-    
+    <div class="col-md-6 order-md-1">  
+
       <span id="result"></span>
 
       <h4 class="mb-3">Login</h4>
