@@ -86,10 +86,10 @@
                                 //Sends email to the user so that they can confirm email adress in theirs.
                                 mail("$email", "Verification Link", $theurl);
 
-                                echo "Please check email  for verification link";
-
+                                //echo "Please check email for verification link";
+                                echo "true";
                                 //echo "New account created successfully";
-                                header("Location: ../login.php?message=Account_Created");
+                                //header("Location: ../login.php?message=Account_Created");
                                 die();
 
                                 }

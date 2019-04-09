@@ -16,10 +16,13 @@ With Prepared Statements
 - ~~Add password reset~~
 - ~~Make cookies and eows created in the sessions table delete after user logs out~~
 - ~~Add forgot password reset~~
-- Add ajax to register form to show if username/email is taken
-- Allow users to upload profile picture
+- ~~Add ajax to register form to show if username/email is taken~~
+- ~~Allow users to upload profile picture~~
+- Add Ajax to password reset
+- Allow users to delete profile picture
 
 # Other To do
-- Add login time stamp on login
+- ~~Add login time stamp on login~~
+- Add 2FA for added security
 - Create user roles and table table
 - Create auto installer for Database for easy first setup
