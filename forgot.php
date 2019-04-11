@@ -5,13 +5,46 @@ if (isset($_SESSION['id'])) {
   header("Location: ../dash");
 }
 ?>
+<script>
+function restPassword(username, token) {
+  if (username == "") {
+    document.getElementById("username").classList.add("is-invalid");
+	} else {
+    document.getElementById("username").classList.remove("is-invalid");
+ 
+		var xhttp;  
+		xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				
+			
+					document.getElementById("result").innerHTML  += "<div class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Holy guacamole! </strong>" + this.responseText + "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
+				
+			}
+		};
+		xhttp.open("GET", "inc/forgot.php?username=" + username + "&token=" + token, true);
+		xhttp.send();   
+		}
+}
+</script>
+
+
+
+
+
+
+
 <div class="container">
 <div class="row justify-content-md-center">
 
     <div class="col-md-6 order-md-1">
+    <span id="result"></span>
+
       <h4 class="mb-3">Reset Password</h4>
       <?php getToken(); ?>
-      <form action="/inc/forgot.php" method="POST" class="needs-validation" novalidate="">
+      <form action="" method="get" enctype="multipart/form-data" >	
+
+      <!--<form action="/inc/forgot.php" method="POST" class="needs-validation" novalidate="">-->
         <div class="row">
         
         <div class="col-md-12 mb-3">
@@ -27,7 +60,9 @@ if (isset($_SESSION['id'])) {
             </div>
           </div>
           <br>
-          <button class="btn btn-primary btn" type="submit">Reset Password</button>
+          <button type="button" name="button" class="btn btn-primary btn-block" onClick="restPassword(username.value, token.value)">Login</button>
+
+          <!--<button class="btn btn-primary btn" type="submit">Reset Password</button>-->
         </div>
 
         

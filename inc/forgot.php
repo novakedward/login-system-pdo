@@ -3,24 +3,11 @@
     include('../config.php');
 
     //Gets results from form
-    $username = $_POST["username"];
-    $token =  $_POST["token"];
+    $username = $_GET["username"];
+    $token =  $_GET["token"];
 
     //This checks to make sure its not a sql injection attack
     checkToken($token);
-
-    if ($debugmode == "true") {
-        echo "Username/email: <b>";
-        echo $username;
-        echo "</b><br>";
-
-        echo "Token: <b>";
-        echo $token;
-        echo "</b><br> User Session: <b>";
-        echo $_SESSION['auth_token'];
-        echo "</b><br>";
-
-    }
 
     //Check for empty
     if (empty($username)) {
@@ -37,12 +24,6 @@
             if ($row_count > 0) {
                 $row = $stmt->fetch();
                 $uemail = $row['email'];
-
-                if ($debugmode == "true") {
-                    echo "Users email: <b>";
-                    echo $uemail;
-                    echo "</b><br>";
-                } else {}
                 
                 //Creates the validatetion to link in the email.
                 function validhash ($username){
@@ -55,20 +36,13 @@
                 //Sets the validate hash that will be sent to email to check.
                 $validate = validhash($username);
 
-                if ($debugmode == "true") {
-                    echo "Users validation token: <b>";
-                    echo $validate;
-                    echo "</b><br>";
-                } else {}
-
                 //Creats the URL to send to the email.
                 $theurl = "http://edwardnovak.info/reset.php?username=$username&validate=$validate";
                 
                 //Sends email to the user so that they can confirm email adress in theirs.
                 mail("$uemail", "Verification Link", $theurl);
 
-                echo "Please check email  for verification link";
-                echo "<br>";
+                echo "Please check email for verification link";
 
                 // set the PDO error mode to exception
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -77,15 +51,12 @@
                 //Adds the users data into the SQL and pushes to the database+
                 $stmt->execute([$validate, $username, $username ]);
 
-                if ($debugmode == "true") {
-                    echo "All good!";
-                    echo "<br>";
-                } else {
-                    header("Location: ../forgot.php");
-                }
+                //header("Location: ../forgot.php");
+                
 
             } else {
-                //nothing matches
+                //nothing matches (but we do not want to let hackers know)
+                echo "Please check email for verification link";
             }
         }
         catch(PDOException $e) {

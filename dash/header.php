@@ -113,7 +113,7 @@
     padding-top: 0px;
   }
   .form-control {
-    border: 0px solid #ced4da;
+    border: 1px solid #ced4da;
     border-radius: 0rem;
 }
 .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
