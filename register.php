@@ -220,7 +220,7 @@ include('header.php');
         </div>
         <hr class="mb-4">
 
-        <button type="button" name="button" class="btn btn-primary btn-block" onClick="login(firstName.value, lastName.value, username.value, email.value, password.value, rpassword.value, token.value)">Login</button>
+        <button type="button" name="button" class="btn btn-primary btn-block" onClick="login(firstName.value, lastName.value, username.value, email.value, password.value, rpassword.value, token.value)">Register</button>
 
       </form>
     </div>

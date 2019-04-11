@@ -20,7 +20,7 @@ With Prepared Statements
 - ~~Allow users to upload profile picture~~
 - ~~Add Ajax to password reset~~
 - Allow users to delete profile picture
-- Clean up register inc file
+- ~~Clean up register inc file~~
 - figure out issue with sessions file
 - figure out token distroy issue
 - Do final testing 
