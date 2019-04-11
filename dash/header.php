@@ -144,19 +144,10 @@
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../dash/">Dashboard <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="../dash/projects.php">Projects</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Notifications</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Switch account</a>
+        <a class="nav-link" href="../dash/profile.php">Profile</a>
       </li>
     </ul>
     <ul class="navbar-nav">
@@ -164,9 +155,8 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="profile.php">Profile</a>
+          <a class="dropdown-item" href="profile.php">Settings</a>
           <a class="dropdown-item" href="security.php">Security</a>
-          <a class="dropdown-item" href="settings.php">Settings</a>
           <a class="dropdown-item" href="../inc/logout.php">Logout</a>
         </div>
       </li>
@@ -176,14 +166,13 @@
 </nav>
 <div class="nav-scroller bg-white shadow-sm">
   <nav class="nav nav-underline">
-    <a class="nav-link active" href="#">Dashboard</a>
-    <a class="nav-link" href="#">
+    <a class="nav-link active" href="../dash/">Dashboard</a>
+    <!--<a class="nav-link" href="#">
       Friends
       <span class="badge badge-pill bg-light align-text-bottom">27</span>
-    </a>
-    <a class="nav-link" href="#">Explore</a>
-    <a class="nav-link" href="#">Suggestions</a>
-
+    </a>-->
+    <a class="nav-link" href="profile.php">Settings</a>
+    <a class="nav-link" href="security.php">Security</a>
   </nav>
 </div>
 

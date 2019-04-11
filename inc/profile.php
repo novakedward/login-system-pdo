@@ -3,12 +3,12 @@
     include('../config.php');
 
     //Gets results from form
-    $id = $_POST["id"];
-    $fname = $_POST["fname"];
-    $lname = $_POST["lname"];
-    $username = $_POST["username"];
-    $email = $_POST["email"];
-    $token =  $_POST["token"];
+    $id = $_GET["userid"];
+    $fname = $_GET["fname"];
+    $lname = $_GET["lname"];
+    $username = $_GET["username"];
+    $email = $_GET["email"];
+    $token =  $_GET["token"];
 
     if ($id != $_SESSION['id']) {
         echo "error invalid user id";
@@ -17,8 +17,6 @@
 
     //This checks to make sure its not a sql injection attack
     checkToken($token);
-
-    destroyToken();
     
     //Check for empty
     if (empty($fname) || empty($lname) || empty($username) || empty($email)) {
@@ -117,8 +115,10 @@
         $_SESSION['fname'] = $fname;
         $_SESSION['lname'] = $lname;
         $_SESSION['username'] = $username;
-                               
-        header("Location: ../dash/profile.php?message=account_updated");
+        
+        echo "Updated";
+        
+        //header("Location: ../dash/profile.php?message=account_updated");
         die();
                     
     } catch(PDOException $e) {

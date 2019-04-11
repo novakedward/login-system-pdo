@@ -22,7 +22,7 @@ With Prepared Statements
 - ~~Allow users to delete profile picture~~
 - ~~Clean up register inc file~~
 - ~~figure out issue with sessions file~~
-- figure out token distroy issue
+- ~~figure out token distroy issue~~
 - Do final testing 
 
 # Other To do
