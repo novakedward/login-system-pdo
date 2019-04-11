@@ -86,18 +86,49 @@ catch(PDOException $e) {
 }
 
 ?>
+
+
+
+<script>
+  function delProfImage(userid, token) {
+      var xhttp;  
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          
+        
+            document.getElementById("result").innerHTML  += "<div class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Holy guacamole! </strong>" + this.responseText + "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
+          
+        }
+      };
+      xhttp.open("GET", "../inc/delete.php?userid=" + userid + "&token=" + token, true);
+      xhttp.send();   
+  }
+</script>
+
+
+
+
+
+
+
+
 <div class="row" style="width: 100%;">
  <div class="col-12">
+      <span id="result"></span>
+
       
       <?php if ($user_image_etc == "") { ?>
 
 
         <?php } else { ?>
-
-          <form action="../inc/upload_del.php" method="post" enctype="multipart/form-data" class="col-12">
-            <input type="text" class="" id="" placeholder="" name="id" value="<?php echo $_SESSION['id']; ?>" hidden>
+          <?php getToken(); ?>
+          <form action="" method="get" enctype="multipart/form-data" >	
+            <?php getTokenField(); ?>
+            <input type="text" class="" id="userid" placeholder="" name="userid" value="<?php echo $_SESSION['id']; ?>" hidden>
             
-            <input class="btn btn-danger btn" type="submit" value="Delete Profile Image" name="submit">
+            <button type="button" name="button" class="btn btn-danger" onClick="delProfImage(userid.value, token.value)">Delete Profile Image</button>
+
           </form>
       <?php } ?>
     </div> 
