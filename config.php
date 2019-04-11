@@ -10,7 +10,10 @@
     
     //adds all required include files
     include_once 'inc/db.php';
-    include_once 'inc/token.php';
-    include_once 'inc/session.php';
+    //include_once 'inc/token.php';
+    //include_once 'inc/session.php';
+    include_once 'inc/auth/token.php';
+    include_once 'inc/auth/cookie.php';
+    include_once 'inc/auth/email.php';
 
 ?>
