@@ -1,4 +1,7 @@
-<?php include('header.php'); ?>
+<?php
+  $page = "Support";
+  include('header.php'); 
+?>
 <style>
 .mb-3, .my-3 {
     margin-bottom: 0rem!important;

@@ -14,6 +14,8 @@
     //Checks token
     checkToken($token);
 
+    destroyToken();
+    
     //Check for empty
     if (empty($fname) || empty($lname) || empty($username) || empty($email) || empty($password)) {
         echo "You did not fill out one of the feilds";

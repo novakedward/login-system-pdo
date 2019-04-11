@@ -11,26 +11,13 @@
 
     if ($id != $_SESSION['id']) {
         echo "error invalid user id";
+        exit();
     }
 
-    if ($debugmode == "true") {
-        echo "Current Pass: <b>";
-        echo $cpass;
-        echo "</b><br> New Pass: <b>";
-        echo $npass;
-        echo "</b><br> Confirm New Pass: <b>";
-        echo $cnpass;
-        echo "</b><br>";
-
-        echo "User ID: <b>";
-        echo $id;
-        echo "</b><br> User Session ID: <b>";
-        echo $_SESSION['id'];
-        echo "</b><br>";
-
-    }
     //This checks to make sure its not a sql injection attack
-    checkToken($token, $debugmode);
+    checkToken($token);
+
+    destroyToken();
 
     //Check for empty
     if (empty($cpass) || empty($npass) || empty($cnpass)) {
@@ -64,8 +51,6 @@
     } 
 
     $hash = password_hash($npass, PASSWORD_DEFAULT);
-
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
     //this prepares the sql statement to make sure no one can hack it.
     $stmt = $conn->prepare("UPDATE users SET password=? WHERE id=?");

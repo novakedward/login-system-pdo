@@ -1,63 +1,56 @@
 <?php
-include('header.php');
-if (isset($_SESSION['id'])) {
-  header("Location: ../dash");
-}
+  $page = "Login";
+  include('header.php');
+
+  if (isset($_SESSION['id'])) {
+    header("Location: ../dash");
+  }
 ?>
-
 <script>
-function login(username, password, token, remember) {
-	
-  if (username == "" || password == "") {
-  if (username == "") {
-    document.getElementById("username").classList.add("is-invalid");
-	} else {
-    document.getElementById("username").classList.remove("is-invalid");
-  }
-  if (password == "") {
-    document.getElementById("password").classList.add("is-invalid");
-	} else {
-    document.getElementById("password").classList.remove("is-invalid");
-  }
-  } else { 
-		
-    document.getElementById("username").classList.remove("is-invalid");
-    document.getElementById("password").classList.remove("is-invalid");
+  function login(username, password, token, remember) {
+    
+    if (username == "" || password == "") {
+    if (username == "") {
+      document.getElementById("username").classList.add("is-invalid");
+    } else {
+      document.getElementById("username").classList.remove("is-invalid");
+    }
+    if (password == "") {
+      document.getElementById("password").classList.add("is-invalid");
+    } else {
+      document.getElementById("password").classList.remove("is-invalid");
+    }
+    } else { 
+      
+      document.getElementById("username").classList.remove("is-invalid");
+      document.getElementById("password").classList.remove("is-invalid");
 
-		var xhttp;  
-		xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				
-				if (this.responseText == "true") {
-					window.location.href = "/dash";
-				} else {
-					document.getElementById("result").innerHTML  += "<div class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Holy guacamole! </strong>" + this.responseText + "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
-				}
-			}
-		};
-		xhttp.open("GET", "inc/login.php?username=" + username + "&password=" + password + "&token=" + token + "&remember=" + remember, true);
-		xhttp.send();   
-		}
-}
+      var xhttp;  
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          
+          if (this.responseText == "true") {
+            window.location.href = "/dash";
+          } else {
+            document.getElementById("result").innerHTML  += "<div class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Holy guacamole! </strong>" + this.responseText + "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
+          }
+        }
+      };
+      xhttp.open("GET", "inc/login.php?username=" + username + "&password=" + password + "&token=" + token + "&remember=" + remember, true);
+      xhttp.send();   
+      }
+  }
 </script>
-
-
 <div class="container">
-<div class="row justify-content-md-center">
-
+  <div class="row justify-content-md-center">
     <div class="col-md-6 order-md-1">  
-
-      <span id="result"></span>
-
-      <h4 class="mb-3">Login</h4>
-
-      <?php getToken(); ?>
-
+    <span id="result"></span>
+    <h4 class="mb-3">Login</h4>
+    <?php getToken(); ?>
       <form action="" method="get" enctype="multipart/form-data" >	
-        
-        <?php getTokenField(); ?>
-        
+      <?php getTokenField(); ?>
+       
         <div class="form-row">
           <div class="col-md-12 mb-3">
             <label for="validationServerUsername">Username</label>
@@ -100,12 +93,7 @@ function login(username, password, token, remember) {
 
       <p><a href="/forgot.php">Forgot password?</a></p>
 
-      <?php //destroyToken(); ?>
-
-    </div>
-       
+    </div>       
   </div>
-
 <?php include('footer.php'); ?>
-
 </div>

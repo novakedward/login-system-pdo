@@ -4,8 +4,6 @@
 
     //Gets results from form
     $username = $_REQUEST["username"];
-
-    //checkToken($token);
     
     $stmt = $conn->prepare('SELECT fname FROM users WHERE username=?');
     $stmt->execute([$username]);

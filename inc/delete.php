@@ -6,6 +6,8 @@ $token =  $_GET["token"];
 
 checkToken($token);
 
+destroyToken();
+
 try {
     $stmt = $conn->prepare('UPDATE users SET image=? WHERE id=?');
     $stmt->execute(["", $user_id]);

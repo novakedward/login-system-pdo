@@ -11,6 +11,8 @@
     //This checks to make sure its not a sql injection attack
     checkToken($token);
 
+    destroyToken();
+
     //Check for empty
     if (empty($username) || empty($password)) {
         echo "You did not fill out one of the feilds";

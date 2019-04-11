@@ -12,30 +12,14 @@
 
     if ($id != $_SESSION['id']) {
         echo "error invalid user id";
+        exit();
     }
 
-    if ($debugmode == "true") {
-        echo "First Name: <b>";
-        echo $fname;
-        echo "</b><br> Last Name: <b>";
-        echo $lname;
-        echo "</b><br> Username: <b>";
-        echo $username;
-        echo "</b><br> Email: <b>";
-        echo $email;
-        echo "</b><br>";
-
-        echo "User ID: <b>";
-        echo $id;
-        echo "</b><br> User Session ID: <b>";
-        echo $_SESSION['id'];
-        echo "</b><br>";
-
-    }
-    
     //This checks to make sure its not a sql injection attack
-    checkToken($token, $debugmode);
+    checkToken($token);
 
+    destroyToken();
+    
     //Check for empty
     if (empty($fname) || empty($lname) || empty($username) || empty($email)) {
         echo "You can not leave these feilds blank blank";
@@ -63,14 +47,6 @@
     $uemail = $row['email'];
     $uuser = $row['username'];
 
-    if ($debugmode == "true") {
-        echo "Current Username: <b>";
-        echo $uuser;
-        echo "</b><br>New Username: <b>";
-        echo $username;
-        echo "</b><br>";
-    }
-
     if ($uuser != $username) {
 
         //Makes sure username is not used
@@ -88,14 +64,6 @@
     //this sets validate to one so if they do not change email to keep them validated
     $validate = "1";
 
-    if ($debugmode == "true") {
-        echo "Current Email: <b>";
-        echo $uemail;
-        echo "</b><br>New Email: <b>";
-        echo $email;
-        echo "</b><br>";
-    }
-
     if ($uemail != $email) {
 
         //Makes sure username is not used
@@ -109,8 +77,6 @@
             exit();
         } 
 
-
-
         //Creates the validatetion to link in the email.
         function validhash ($username){
             $salt = base64_encode (openssl_random_pseudo_bytes (17));
@@ -122,11 +88,7 @@
         //Sets the validate hash that will be sent to email to check.
         $validate = validhash($username);
 
-        /********************************************
-         * NEED TO CREATE FUNCTION TO ADD NEW EMAILS INSTAD OF REPLACING IT
-         ********************************************/
-
-        //Creats the URL to send to the email.
+        //Creates the URL to send to the email.
         $theurl = "http://edwardnovak.info/inc/verify.php?username=$username&email=$email&validate=$validate";
         
         //Sends email to the user so that they can confirm email adress in theirs.
@@ -156,15 +118,10 @@
         $_SESSION['lname'] = $lname;
         $_SESSION['username'] = $username;
                                
-        if ($debugmode == "true") {
-            echo "all good";
-        } else {
-            header("Location: ../dash/profile.php?message=account_updated");
-            die();
-        }               
-    }
-    
-    catch(PDOException $e) {
+        header("Location: ../dash/profile.php?message=account_updated");
+        die();
+                    
+    } catch(PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
     }             
 ?>

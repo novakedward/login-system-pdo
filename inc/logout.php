@@ -7,8 +7,9 @@ session_unset();
 session_destroy();
 
 if(!isset($_COOKIE['session'])) { 
+
 } else {
-    
+
     try {
 
         $session = $_COOKIE['session'];
@@ -18,16 +19,13 @@ if(!isset($_COOKIE['session'])) {
         $stmt = $conn->prepare('DELETE FROM sessions WHERE session=?');
         $stmt->execute([$session]);
        
-        setcookie("session", "", time() - 3600);
-    }
-    catch(PDOException $e)
-        {
+        setcookie("session", '', time()-1000);
+        setcookie("session", '', time()-1000, '/');
+    } catch(PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
-        }
-
+    }
 
 }
-
 
 header("location: ../index.php");
 exit();

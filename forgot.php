@@ -28,52 +28,32 @@ function restPassword(username, token) {
 }
 </script>
 
-
-
-
-
-
-
 <div class="container">
-<div class="row justify-content-md-center">
-
+  <div class="row justify-content-md-center">
     <div class="col-md-6 order-md-1">
-    <span id="result"></span>
-
+      <span id="result"></span>
       <h4 class="mb-3">Reset Password</h4>
       <?php getToken(); ?>
       <form action="" method="get" enctype="multipart/form-data" >	
-
-      <!--<form action="/inc/forgot.php" method="POST" class="needs-validation" novalidate="">-->
-        <div class="row">
-        
-        <div class="col-md-12 mb-3">
-        <?php getTokenField(); ?>
-          <label for="username">Username or Email</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">@</span>
+        <div class="row">   
+          <div class="col-md-12 mb-3">
+            <?php getTokenField(); ?>
+            <label for="username">Username or Email</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">@</span>
+              </div>
+              <input name="username" type="text" class="form-control" id="username" placeholder="Username" required="">
+              <div class="invalid-feedback" style="width: 100%;">
+                Your username is required.
+              </div>
             </div>
-            <input name="username" type="text" class="form-control" id="username" placeholder="Username" required="">
-            <div class="invalid-feedback" style="width: 100%;">
-              Your username is required.
-            </div>
-          </div>
-          <br>
-          <button type="button" name="button" class="btn btn-primary btn-block" onClick="restPassword(username.value, token.value)">Login</button>
-
-          <!--<button class="btn btn-primary btn" type="submit">Reset Password</button>-->
+            <br>
+            <button type="button" name="button" class="btn btn-primary btn-block" onClick="restPassword(username.value, token.value)">Login</button>
+          </div>        
         </div>
-
-        
-        </div>
-        </div>
-
-      </form>
-      <?php //destroyToken(); ?>
-    </div>
-
-<?php
-include('footer.php');
-?>
+      </div>
+    </form>
+  </div>
+<?php include('footer.php'); ?>
 </div>
