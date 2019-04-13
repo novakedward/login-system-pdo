@@ -23,10 +23,16 @@ With Prepared Statements
 - ~~Clean up register inc file~~
 - ~~figure out issue with sessions file~~
 - ~~figure out token distroy issue~~
+- Fix security form (needs to be type password)
+- Add Body tag to header
 - Do final testing 
+
+# Requested Updates
+- Make errors a function
 
 # Other To do
 - ~~Add login time stamp on login~~
 - Add 2FA for added security
 - Create user roles and table
 - Create auto installer for Database for easy first setup
+
